@@ -1,5 +1,5 @@
 declare module 'react-typewriter-effect' {
-    const Typewriter: any;
+    const Typewriter: React.FC<any>;
     export default Typewriter;
   }
   
