@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Menu, X, ShoppingCart, User, Search } from 'lucide-react';
 
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -46,10 +47,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: 'Home', icon: null },
-    { name: 'About', icon: null },
-    { name: 'Products', icon: null },
-    { name: 'Contact', icon: null },
+    { name: 'Home', icon: null , href: '/'},
+    { name: 'About', icon: null , href: '/about'},
+    { name: 'Products', icon: null, href: '/products' },
+    { name: 'Contact', icon: null , href: '/contact'},
   ];
 
   return (
@@ -80,7 +81,7 @@ const Navbar = () => {
           {navItems.map((item, index) => (
             <motion.li key={index} variants={textVariants}>
               <a
-                href="#"
+                href={item.href}
                 className="text-gray-800 hover:text-black relative group font-semibold text-lg tracking-wide flex items-center gap-2"
               >
                 {item.icon && <item.icon className="w-5 h-5" />}
