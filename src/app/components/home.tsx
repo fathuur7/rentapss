@@ -3,42 +3,43 @@ import React from 'react';
 import HeroSection from './layout/heroSection';
 import { fetchData } from '@/utils/fecth';
 import { useEffect, useState } from 'react';
-import CompanionsList from './layout/CompanionsList'
+import CompanionsList from './layout/CompanionsList';
 import ServiceSection from './layout/serviceSection';
 import ContactSection from './layout/contactSection';
+import LoadingState from './layout/LoadingState';
 
 const Home = () => {
   const [data, setData] = useState([]);
-  
+  const [isLoading, setIsLoading] = useState(true);
+  const path = '/data/data.json';
+
   useEffect(() => {
     const getData = async () => {
       try {
-        const result = await fetchData();
-        console.log('Fetched data:', result); // Log data yang sebenarnya
+        setIsLoading(true);
+        const result = await fetchData(path);
         setData(result);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getData();
-  }, []); // Empty dependency array ensures this runs once on mount
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
       <HeroSection />
-      
-      {/* Services Section */}
       <ServiceSection />
       
-      {/* Testimonials */}
-      {data.length > 0 ? (
-        <CompanionsList data={data} />
+      {/* Testimonials with loading state */}
+      {isLoading ? (
+        <LoadingState />
       ) : (
-        <p className="text-center text-gray-500">Loading testimonials...</p>
+        <CompanionsList data={data} />
       )}
       
-      {/* Contact Section */}
       <ContactSection />
     </div>
   );

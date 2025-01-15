@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Menu, X, ShoppingCart, User, Search } from 'lucide-react';
-
+import { Menu, X, ShoppingCart, User, Search , Home , PhoneCall  } from 'lucide-react';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +32,7 @@ const Navbar = () => {
       },
     },
   };
-  
+
   const menuVariants = {
     hidden: { opacity: 0, x: '100%' },
     visible: {
@@ -47,10 +47,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: 'Home', icon: null , href: '/'},
-    { name: 'About', icon: null , href: '/about'},
+    { name: 'Home', icon:Home , href: '/' },
+    { name: 'About', icon: null, href: '/about' },
     { name: 'Products', icon: null, href: '/products' },
-    { name: 'Contact', icon: null , href: '/contact'},
+    { name: 'Contact', icon: PhoneCall, href: '/contact' },
   ];
 
   return (
@@ -62,15 +62,17 @@ const Navbar = () => {
     >
       <nav className="max-w-6xl mx-auto flex justify-between items-center">
         <motion.div variants={textVariants}>
-          <a href="#" className="flex items-center">
-            <Image
-              src="/logo-hitam.jpg"
-              alt="Logo"
-              width={100}
-              height={50}
-              className="rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            />
-          </a>
+          <Link href="/" legacyBehavior>
+            <a className="flex items-center">
+              <Image
+                src="/logo-hitam.jpg"
+                alt="Logo"
+                width={100}
+                height={50}
+                className="rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              />
+            </a>
+          </Link>
         </motion.div>
 
         {/* Desktop Navigation */}
@@ -80,20 +82,19 @@ const Navbar = () => {
         >
           {navItems.map((item, index) => (
             <motion.li key={index} variants={textVariants}>
-              <a
-                href={item.href}
-                className="text-gray-800 hover:text-black relative group font-semibold text-lg tracking-wide flex items-center gap-2"
-              >
-                {item.icon && <item.icon className="w-5 h-5" />}
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out"></span>
-              </a>
+              <Link href={item.href} legacyBehavior>
+                <a className="text-gray-800 hover:text-black relative group font-semibold text-lg tracking-wide flex items-center gap-2">
+                  {item.icon && <item.icon className="w-5 h-5" />}
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out"></span>
+                </a>
+              </Link>
             </motion.li>
           ))}
         </motion.ul>
 
         {/* Desktop Icons */}
-        <motion.div 
+        <motion.div
           className="hidden md:flex items-center space-x-6"
           variants={containerVariants}
         >
@@ -104,23 +105,25 @@ const Navbar = () => {
           >
             <Search className="w-6 h-6" />
           </motion.button>
-          <motion.a
-            href="#"
-            variants={textVariants}
-            className="p-2 hover:bg-yellow-500 rounded-full transition-colors duration-200"
-          >
-            <User className="w-6 h-6" />
-          </motion.a>
-          <motion.a
-            href="#"
-            variants={textVariants}
-            className="p-2 hover:bg-yellow-500 rounded-full transition-colors duration-200 relative"
-          >
-            <ShoppingCart className="w-6 h-6" />
-            <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-              0
-            </span>
-          </motion.a>
+          <Link href="/profile" legacyBehavior>
+            <a
+              className="p-2 hover:bg-yellow-500 rounded-full transition-colors duration-200"
+              variants={textVariants}
+            >
+              <User className="w-6 h-6" />
+            </a>
+          </Link>
+          <Link href="/cart" legacyBehavior>
+            <a
+              className="p-2 hover:bg-yellow-500 rounded-full transition-colors duration-200 relative"
+              variants={textVariants}
+            >
+              <ShoppingCart className="w-6 h-6" />
+              <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                0
+              </span>
+            </a>
+          </Link>
         </motion.div>
 
         {/* Mobile Menu Button */}
@@ -149,53 +152,18 @@ const Navbar = () => {
                     variants={textVariants}
                     className="w-full"
                   >
-                    <a
-                      href="#"
-                      className="text-gray-800 text-xl font-semibold flex items-center justify-center gap-3 py-3 px-4 hover:bg-yellow-500 rounded-xl transition-all duration-200 transform hover:scale-105"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.icon && <item.icon className="w-6 h-6" />}
-                      {item.name}
-                    </a>
+                    <Link href={item.href || '#'} legacyBehavior>
+                      <a
+                        className="text-gray-800 text-xl font-semibold flex items-center justify-center gap-3 py-3 px-4 hover:bg-yellow-500 rounded-xl transition-all duration-200 transform hover:scale-105"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.icon && <item.icon className="w-6 h-6" />}
+                        {item.name}
+                      </a>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Search Overlay */}
-        <AnimatePresence>
-          {isSearchOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center pt-24 px-4 z-50"
-              onClick={() => setIsSearchOpen(false)}
-            >
-              <motion.div
-                className="w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden"
-                onClick={e => e.stopPropagation()}
-              >
-                <div className="flex items-center p-4 bg-yellow-400">
-                  <Search className="w-6 h-6 text-gray-600" />
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    className="w-full px-4 py-2 bg-transparent outline-none text-gray-800 placeholder-gray-600"
-                    autoFocus
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setIsSearchOpen(false)}
-                    className="p-2 hover:bg-yellow-500 rounded-full transition-colors duration-200"
-                    aria-label='Close'
-                  >
-                    <X className="w-6 h-6"/>X
-                  </button>
-                </div>
-              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>

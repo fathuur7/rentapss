@@ -1,12 +1,12 @@
-export const fetchData = async () => {
+export const fetchData = async (path : string) => {
     try {
-        const response = await fetch('/data/data.json'); // Path file di folder public
+        const response = await fetch(path); // Path file di folder public
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
-        console.log(data);
-        return data;
+        const dataProduct = await response.json();
+        console.log(dataProduct);
+        return dataProduct;
     } catch (error) {
         console.error('Error fetching data:', error);
         return [];
