@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import CompanionsList from './layout/CompanionsList';
 import ServiceSection from './layout/serviceSection';
 import ContactSection from './layout/contactSection';
-import LoadingState from './layout/LoadingState';
+import LoadingState from './LoadingState';
 
 const Home = () => {
   const [data, setData] = useState([]);
