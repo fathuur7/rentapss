@@ -89,11 +89,14 @@ const HeroSection = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <button className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group">
+            <button
+              onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group"
+            >
               Explore Services
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition-colors">
+            <button className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition-colors" onClick={() => window.location.href = '/contact'}>
               Contact Us
             </button>
           </motion.div>

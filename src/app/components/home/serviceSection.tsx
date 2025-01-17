@@ -98,18 +98,18 @@ const services = [
 export default function ServiceSection() {
   return (
     <motion.section
-      className="py-24 px-4 bg-gradient-to-br from-yellow-50 to-yellow-200 perspective-1000"
+      className="py-24 px-4 bg-gradient-to-br from-yellow-50 to-yellow-200 perspective-1000 service-section"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto"  >
         <motion.div 
           className="text-center mb-16"
           variants={headerVariants}
         >
-          <h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-yellow-400">
+          <h2 id="services" className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 to-yellow-400" >
             Our Premium Services
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto">
