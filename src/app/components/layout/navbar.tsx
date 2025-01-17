@@ -185,36 +185,36 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={menuVariants}
-                className="fixed inset-0 bg-gradient-to-b from-yellow-400 to-yellow-300 md:hidden pt-24 px-6"
-              >
-                <ul className="flex flex-col space-y-6 items-center">
-                  {[...navItems, { name: 'Search', icon: Search }, { name: 'Profile', icon: User }, { name: 'Cart', icon: ShoppingCart }].map((item, index) => (
-                    <motion.li
-                      key={index}
-                      variants={textVariants}
-                      className="w-full"
-                    >
-                      <Link href={item.href || '#'} legacyBehavior>
-                        <a
-                          className="text-gray-800 text-xl font-semibold flex items-center justify-center gap-3 py-3 px-4 hover:bg-yellow-500 rounded-xl transition-all duration-200 transform hover:scale-105"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <item.icon className="w-6 h-6" />
-                          {item.name}
-                        </a>
-                      </Link>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={menuVariants}
+              className="fixed inset-0 bg-gradient-to-b from-yellow-400 to-yellow-300 md:hidden pt-24 px-6"
+            >
+              <ul className="flex flex-col space-y-6 items-center">
+                {[...navItems, { name: 'Search', icon: Search }, { name: 'Profile', icon: User }, { name: 'Cart', icon: ShoppingCart }].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    variants={textVariants}
+                    className="w-full text-center mt-8 bg-yellow-300 rounded-xl shadow-lg"
+                  >
+                    <Link href={item.href || '#'} legacyBehavior>
+                      <a
+                        className="text-gray-800 text-xl font-semibold flex items-center justify-center gap-3 py-3 px-4 hover:bg-yellow-500 rounded-xl transition-all duration-200 transform hover:scale-105"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.icon && <item.icon className="w-6 h-6" />}
+                        {item.name}
+                      </a>
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
         </nav>
       </motion.header>
     </>
