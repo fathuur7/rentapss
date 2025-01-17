@@ -20,13 +20,13 @@ const HeroSectionProduct = ({ onSearch }) => {
     };
   }, [debouncedSearch]);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Immediate search on form submit
     onSearch(searchTerm);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e : React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
     // Debounced search on input change
