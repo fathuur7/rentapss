@@ -188,7 +188,9 @@ export default function CompanionsList({ data }: CompanionProps,) {
                       initial="initial"
                       whileHover="hover"
                       whileTap="tap"
-                      className="flex items-center justify-center gap-2 bg-yellow-400 text-gray-800 px-4 py-2 rounded-full font-medium text-sm sm:text-base w-full sm:w-auto transform-gpu"
+                      className="flex items-center justify-center gap-2
+                       bg-yellow-400 text-gray-800 px-4 py-2 rounded-full 
+                       font-medium text-sm sm:text-base w-full sm:w-auto transform-gpu"
                     >
                       <Phone className="w-4 h-4" />
                       Contact
@@ -198,7 +200,9 @@ export default function CompanionsList({ data }: CompanionProps,) {
                       initial="initial"
                       whileHover="hover"
                       whileTap="tap"
-                      className="flex items-center justify-center gap-2 border-2 border-yellow-400 text-gray-800 px-4 py-2 rounded-full font-medium text-sm sm:text-base w-full sm:w-auto transform-gpu"
+                      className="flex items-center justify-center gap-2 border-2 border-yellow-400 
+                      text-gray-800 px-4 py-2 rounded-full font-medium 
+                      text-sm sm:text-base w-full sm:w-auto transform-gpu "
                     >
                       <MessageCircle className="w-4 h-4" />
                       Message
