@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/layout/navbar";
-import CompanionCard from "../components/home/cardProduct";
+import CompanionCard from "../components/product/cardProduct";
 import HeroSectionProduct from '../components/product/heroSectionProduct';
 import { fetchData } from '@/utils/fecth';
 import LoadingState from "../components/product/LoadingState";

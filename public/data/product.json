@@ -40,6 +40,48 @@
         "description": "With me, your date will not only be enjoyable but also inspiring. Make your day more special with my charm and warmth.",
         "image": "https://i.pinimg.com/736x/c4/77/c4/c477c46f1b44f0a046325740b6c451d1.jpg",
         "price": 1200000
+    },
+    {
+        "id": 7,
+        "stageName": "Jin",
+        "description": "Experience an unforgettable dating experience with me. With my warm personality and humorous nature, I will make your day filled with happiness!",
+        "image": "https://i.pinimg.com/736x/2b/7b/ee/2b7bee615501e9e92e3ca5013b5c016b.jpg",
+        "price": 700000
+    },
+    {
+        "id": 8,
+        "stageName": "Lisa",
+        "description": "Dating with me is a journey of style and charm. I will make you feel special with my smile and captivating presence.",
+        "image": "https://i.pinimg.com/736x/a3/61/5f/a3615f9cc8c3c27d9de4739796911b9d.jpg",
+        "price": 800000
+    },
+    {
+        "id": 9,
+        "stageName": "Kai",
+        "description": "Are you ready to experience a special moment with me? With my charisma and full attention, I will ensure that this date becomes a beautiful story to be remembered.",
+        "image": "https://i.pinimg.com/736x/38/72/b7/3872b7ae7d11973045c5ffcbc7160b4d.jpg",
+        "price": 1000000
+    },
+    {
+        "id": 10,
+        "stageName": "Jennie",
+        "description": "I will be the perfect companion for a warm and joyful date. With me, every moment feels like our own little world.",
+        "image": "https://i.pinimg.com/736x/83/5e/0f/835e0f0b83da64eb3ec31fd9944ef00d.jpg",
+        "price": 1200000
+    },
+    {
+        "id": 11,
+        "stageName": "Taeyong",
+        "description": "Dating with me is a perfect blend of enjoyable conversation and captivating charm. Don't miss the opportunity to create a sweet memory.",
+        "image": "https://i.pinimg.com/736x/52/20/85/5220851d6253a8fd8c76961ed924babe.jpg",
+        "price": 1000000
+    },
+    {
+        "id": 12,
+        "stageName": "Karina",
+        "description": "With me, your date will not only be enjoyable but also inspiring. Make your day more special with my charm and warmth.",
+        "image": "https://i.pinimg.com/736x/c4/77/c4/c477c46f1b44f0a046325740b6c451d1.jpg",
+        "price": 1200000
     }
 ]
 

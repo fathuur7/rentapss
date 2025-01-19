@@ -42,7 +42,7 @@ export const ImageBanner = () => {
       className="relative rounded-2xl overflow-hidden mb-16 mt-8" 
     >
       {/* Main banner section */}
-      <div className="relative h-[500px] md:h-[600px] group ">
+      <div className="relative h-[500px] md:h-[600px] group">
         <Image
           src="/aboutImage.jpg"
           alt="About Us Banner"
