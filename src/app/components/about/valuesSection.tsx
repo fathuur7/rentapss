@@ -108,10 +108,10 @@ export const ValuesSection = () => {
             key={index}
             variants={fadeInUp}
             className={`group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300
-              ${value.color === 'rose' ? 'hover:bg-rose-50' : ''}
-              ${value.color === 'blue' ? 'hover:bg-blue-50' : ''}
-              ${value.color === 'yellow' ? 'hover:bg-yellow-50' : ''}`}
-            whileHover={{ y: -5 }}
+              ${value.color === 'rose' ? 'hover:bg-rose-200' : ''}
+              ${value.color === 'blue' ? 'hover:bg-blue-200' : ''}
+              ${value.color === 'yellow' ? 'hover:bg-yellow-200' : ''}`}
+            whileHover={{ y: -5  }}
           >
             {/* Decorative Background */}
             <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-20
@@ -134,9 +134,9 @@ export const ValuesSection = () => {
                 />
               </div>
             </div>
-
+            
             {/* Content */}
-            <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
+            <h3 className="text-2xl font-bold mb-4 text-gray-800">{value.title}</h3>
             <p className="text-gray-600 mb-6">{value.description}</p>
 
             {/* Benefits List */}

@@ -52,7 +52,7 @@ const ProductPage = () => {
       <Navbar />
       <HeroSectionProduct onSearch={handleSearch} />
       
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-300">
         <div className="container mx-auto px-4">
           {isLoading || isSearching ? (
             <LoadingState />

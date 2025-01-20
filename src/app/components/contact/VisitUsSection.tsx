@@ -36,13 +36,13 @@ const VisitUsSection = () => {
       icon: Phone,
       title: "Phone",
       info: "+1 (234) 567-8900",
-      subInfo: "Toll Free: 1-800-123-4567"
+      subInfo: "Toll Free: 1-800-8723-2322"
     },
     {
       icon: Mail,
       title: "Email",
-      info: "contact@yourbusiness.com",
-      subInfo: "support@yourbusiness.com"
+      info: "kopisusu8ip@gmail.com",
+      subInfo: "support@rentcompanion.com"
     }
   ];
 
@@ -122,7 +122,7 @@ const VisitUsSection = () => {
                       backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
                       backgroundSize: '20px 20px'
                     }} />
-                  <Maps/> 
+                    <Maps/> 
                   </div>
                   {/* <span className="font-medium">
                   </span> */}

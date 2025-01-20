@@ -31,7 +31,7 @@ const Contact: React.FC = () => {
       </section>
     
     {/* Map Section */}
-      <VisitUsSection />
+    <VisitUsSection />
 
     {/* Contact Info Section */}
     <ContactInfo />
