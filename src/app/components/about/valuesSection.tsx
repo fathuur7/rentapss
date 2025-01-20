@@ -78,7 +78,7 @@ export const ValuesSection = () => {
         >
           Our Core Values
         </motion.span>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
           What Makes Us{' '}
           <span className="relative inline-block text-yellow-600">
             Different

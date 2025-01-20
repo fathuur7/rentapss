@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.0",
     "framer-motion": "^11.18.0",
+    "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
     "lucide-react": "^0.469.0",
     "next": "15.1.4",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@shadcn/ui": "^0.0.4",
+    "@types/leaflet": "^1.9.16",
     "@types/lodash": "^4.17.14",
     "@types/node": "^20",
     "@types/react": "^19",

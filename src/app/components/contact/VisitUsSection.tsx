@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone, Mail, ExternalLink } from 'lucide-react';
+import Maps from '../about/map/maps';
 
 const VisitUsSection = () => {
   const containerVariants = {
@@ -116,13 +117,15 @@ const VisitUsSection = () => {
               {/* Replace this div with your actual map component */}
               <div className="w-full h-full min-h-[400px] bg-gray-100 p-1">
                 <div className="w-full h-full bg-white rounded-xl flex items-center justify-center text-gray-400 relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-30">
+                  <div className="absolute inset-0 opacity-30 overflow-hidden">
                     <div className="absolute inset-0" style={{
                       backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
                       backgroundSize: '20px 20px'
                     }} />
+                  <Maps/> 
                   </div>
-                  <span className="font-medium">Interactive Map Coming Soon</span>
+                  {/* <span className="font-medium">
+                  </span> */}
                 </div>
               </div>
             </div>

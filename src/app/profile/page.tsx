@@ -54,7 +54,7 @@ const ProfilePage = () => {
       className="min-h-screen bg-gradient-to-br from-yellow-50 to-yellow-200"
     >
       {/* Header Section */}
-      <div className="relative w-full h-64 bg-gradient-to-r from-yellow-400 to-yellow-600">
+      <div className="relative w-full h-64 bg-white shadow-lg rounded-b-3xl">
         {/* button back to home */}
         <motion.a
         whileHover={{ scale: 1.1 }}
