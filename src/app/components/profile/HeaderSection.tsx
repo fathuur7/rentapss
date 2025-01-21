@@ -45,7 +45,7 @@ const HeaderSection = () => {
             {/* Profile image container */}
             <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-gray-100">
               <Image
-                src="/api/placeholder/150/150"
+                src="/logo-hitam.jpg"
                 alt="Profile"
                 width={150}
                 height={150}
