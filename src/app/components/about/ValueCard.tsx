@@ -15,6 +15,7 @@ const ValueCard = () => {
       title: "Community First",
       description: "Building and nurturing a supportive community where everyone feels welcomed and valued.",
       color: "text-purple-500",
+      
       bgColor: "bg-purple-50/10"
     },
     {
