@@ -15,7 +15,7 @@ const HeaderSection = () => {
         <div className="flex justify-between items-center pt-4">
           {/* Back button */}
           <Link 
-            href="/"
+            href="/home"
             className="flex items-center gap-2 bg-white/90 hover:bg-white text-gray-800 px-4 py-2 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
           >
             <ArrowBigLeft className="w-5 h-5" />

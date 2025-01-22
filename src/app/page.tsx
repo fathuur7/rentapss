@@ -1,14 +1,20 @@
-import Header  from "./components/layout/header";
-import Navbar from './components/layout/navbar';
-import Home from './components/home';
+'use client';
+import React from 'react';
+import AuthNav from './components/intro/AuthNav';
+import  MainContent  from './components/intro/MainContent';
+import FooterIntro from './components/intro/FooterIntro.';
 
-export default function APP() {
+const APP = () => {
   return (
-    // Redirect to the home page when the app loads
-    <main className="min-h-screen">
-      <Header />
-      <Navbar />
-      <Home />
-    </main>
+    <div className="min-h-screen flex flex-col">
+      {/* Top Right Login */}
+      <AuthNav />
+      {/* Main Content */}
+      <MainContent />
+      {/* Minimal Bottom Footer */}
+      <FooterIntro />
+    </div>
   );
-}
+};
+
+export default APP;

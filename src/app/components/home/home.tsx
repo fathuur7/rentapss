@@ -1,14 +1,14 @@
 'use client';
 import React from 'react';
-import HeroSection from './home/heroSection';
+import HeroSection from './heroSection';
 import { fetchData } from '@/utils/fecth';
 import { useEffect, useState } from 'react';
-import CompanionsList from './home/CompanionsList';
-import ServiceSection from './home/serviceSection';
-import ContactSection from './home/contactSection';
-import LoadingState from './product/LoadingState';
+import CompanionsList from './CompanionsList';
+import ServiceSection from './serviceSection';
+import ContactSection from './contactSection';
+import LoadingState from '../product/LoadingState';
 
-const Home = () => {
+const HomeComponent = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const path = '/data/data.json';
@@ -45,4 +45,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeComponent;

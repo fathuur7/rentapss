@@ -57,7 +57,7 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: 'Home', icon: Home, href: '/' },
+    { name: 'Home', icon: Home, href: '/home' },
     { name: 'About', icon: Info, href: '/about' },
     { name: 'Products', icon: ShoppingBag, href: '/products' },
     { name: 'Contact', icon: PhoneCall, href: '/contact' },
@@ -76,7 +76,7 @@ const Navbar = () => {
             variants={textVariants}
             className="relative group"
           >
-            <Link href="/" legacyBehavior>
+            <Link href="/home" legacyBehavior>
               <a className="flex items-center">
                 <div className="relative">
                   <Image
