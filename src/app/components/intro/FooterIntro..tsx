@@ -7,7 +7,7 @@ export default function FooterIntro() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8 }}
-        className="bg-white border-t border-gray-200"
+        className="bg-gradient-to-b from-yellow-50 via-white to-yellow-50 border-gray-200"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-4">

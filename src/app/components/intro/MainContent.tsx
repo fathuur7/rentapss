@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Star, Package, ShoppingBag, ArrowRight, Zap, Heart, Gift } from 'lucide-react';
+import FooterIntro from './FooterIntro.';
 
 const FloatingElement = ({ children, delay = 0, scale = 1 }) => {
   return (
@@ -78,7 +79,7 @@ const ShineEffect = () => (
 
 export default function MainContent() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-yellow-50 via-white to-yellow-50 flex items-center justify-center overflow-hidden">
+    <main className="bg-gradient-to-b from-yellow-50 via-white to-yellow-50 flex items-center justify-center overflow-hidden">
       <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative py-20">
         {/* Enhanced Floating Elements */}
         <div className="absolute inset-0 overflow-hidden">
