@@ -122,7 +122,7 @@ const RegistrationForm: React.FC<{
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="p-6 max-w-md mx-auto bg-white shadow-lg rounded-xl"
+      className="p-6 max-w-md mx-auto rounded-xl border-white/30 max-w-md border"
     >
       <h2 className="text-2xl font-bold text-center mb-6 text-yellow-600">Create Account</h2>
       {error &&  (
@@ -130,7 +130,7 @@ const RegistrationForm: React.FC<{
           <span>{error}</span>
         </div>
       )}
-
+      
       <InputField 
         label="Name" 
         id="name" 

@@ -5,8 +5,10 @@ import { motion } from 'framer-motion';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
 import FormRegister from '../../components/form/FormRegister';
 import { registerUser } from '../../../utils/registerUser';
+import { useRouter } from 'next/navigation';
 
 const RegisterPage = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,7 +31,8 @@ const RegisterPage = () => {
         message: 'Registration Successful!'
       });
       console.log('Registration Successful:', data);
-    } catch (error: any) {
+      router.push('/auth/login');
+    } catch (error) {
       setRegistrationStatus({
         success: false,
         message: error.message || 'Registration failed. Please try again.'
@@ -37,7 +40,7 @@ const RegisterPage = () => {
       console.error('Error during registration:', error);
     }
   };
-
+  
   return (
       <div className="space-y-4">
         <FormRegister

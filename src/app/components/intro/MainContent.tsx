@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, Star, Package, ShoppingBag, ArrowRight, Zap, Heart, Gift } from 'lucide-react';
 import FooterIntro from './FooterIntro.';
 
-const FloatingElement = ({ children, delay = 0, scale = 1 }) => {
+const FloatingElement = ({ children, delay = 0, scale = 1 }  ) => {
   return (
     <motion.div
       animate={{

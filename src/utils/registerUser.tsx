@@ -1,5 +1,5 @@
-export const registerUser = async (formData) => {
-  const API_URL = 'http://localhost:3000/api/auth/register';
+export const registerUser = async (formData : FormData) => {
+  const API_URL = 'http://localhost:5000/api/auth/register';
 
   try {
     const response = await fetch(API_URL, {
@@ -9,11 +9,11 @@ export const registerUser = async (formData) => {
       },
       body: JSON.stringify(formData),
     });
-
+    
     if (!response.ok) {
-      throw new Error(`Failed to register: ${response.status}`);
+      throw new Error(`Failed to register: ${response.status} ${response.statusText}`);
     }
-
+    
     return await response.json();
   } catch (error) {
     console.error('Registration error:', error);
