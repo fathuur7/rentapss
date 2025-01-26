@@ -20,21 +20,26 @@ const FormLogin: React.FC<{
   formData: FormData;
   setFormData: React.Dispatch<React.SetStateAction<FormData>>;
   onSubmit: () => void;
-  error?: string;
-}> = ({ formData, setFormData, onSubmit, error }) => {
+  loading?: boolean;
+}> = ({ formData, setFormData, onSubmit, loading = false }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [validationErrors, setValidationErrors] = useState<{
     email?: string;
     password?: string;
   }>({});
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+    
     try {
-      loginSchema.parse(formData);
+      // Validate form data
+      const validatedData = loginSchema.parse(formData);
+      
+      // Reset validation errors
       setValidationErrors({});
-      onSubmit();
+      
+      // Submit validated data
+      onSubmit(validatedData);
     } catch (err) {
       if (err instanceof z.ZodError) {
         const errors = err.flatten().fieldErrors;
@@ -43,6 +48,21 @@ const FormLogin: React.FC<{
           password: errors.password?.[0],
         });
       }
+    }
+  };
+
+  const handleInputChange = (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: e.target.value
+    }));
+    
+    // Clear specific field error when user starts typing
+    if (validationErrors[field]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [field]: undefined
+      }));
     }
   };
 
@@ -68,15 +88,14 @@ const FormLogin: React.FC<{
             type="email"
             id="email"
             value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
+            onChange={handleInputChange('email')}
             placeholder="Enter your email"
+            disabled={loading}
             className={`w-full pl-10 pr-3 py-2 border ${
               validationErrors.email ? 'border-red-500' : 'border-gray-300'
             } rounded-lg focus:outline-none focus:ring-2 ${
               validationErrors.email ? 'focus:ring-red-500' : 'focus:ring-yellow-500'
-            }`}
+            } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           />
         </div>
         {validationErrors.email && (
@@ -97,20 +116,22 @@ const FormLogin: React.FC<{
             type={showPassword ? 'text' : 'password'}
             id="password"
             value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
+            onChange={handleInputChange('password')}
             placeholder="Enter your password"
+            disabled={loading}
             className={`w-full pl-10 pr-10 py-2 border ${
               validationErrors.password ? 'border-red-500' : 'border-gray-300'
             } rounded-lg focus:outline-none focus:ring-2 ${
               validationErrors.password ? 'focus:ring-red-500' : 'focus:ring-yellow-500'
-            }`}
+            } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2"
+            disabled={loading}
+            className={`absolute right-3 top-1/2 transform -translate-y-1/2 ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
@@ -124,12 +145,15 @@ const FormLogin: React.FC<{
 
       <motion.button
         type="submit"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="w-full bg-yellow-500 text-white py-3 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300 transition duration-300 ease-in-out flex items-center justify-center"
+        whileHover={{ scale: loading ? 1 : 1.05 }}
+        whileTap={{ scale: loading ? 1 : 0.95 }}
+        disabled={loading}
+        className={`w-full bg-yellow-500 text-white py-3 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300 transition duration-300 ease-in-out flex items-center justify-center ${
+          loading ? 'opacity-50 cursor-not-allowed' : ''
+        }`}
       >
         <LogIn size={20} className="mr-2" />
-        Login
+        {loading ? 'Logging in...' : 'Login'}
       </motion.button>
 
       <div className="text-center mt-4">

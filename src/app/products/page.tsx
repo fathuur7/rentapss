@@ -1,9 +1,9 @@
 'use client';
 import React, { useState, useEffect, useMemo } from "react";
 import { debounce } from "lodash";
-import Navbar from "../components/layout/navbar";
-import CompanionCard from "../components/product/cardProduct";
-import HeroSectionProduct from '../components/product/heroSectionProduct';
+import Navbar from "../../components/layout/navbar";
+import CompanionCard from "../../components/product/cardProduct";
+import HeroSectionProduct from '../../components/product/heroSectionProduct';
 import { fetchData } from '@/utils/fecth';
 
 interface Product {

@@ -2,11 +2,11 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '../components/layout/navbar';
-import AboutHeroSection  from '../components/about/AboutHeroSection';
-import { StorySection } from '../components/about/StorySection';
-import { ImageBanner } from '../components/about/imageBanner';
-import { ValuesSection } from '../components/about/valuesSection';
+import Navbar from '../../components/layout/navbar';
+import AboutHeroSection  from '../../components/about/AboutHeroSection';
+import { StorySection } from '../../components/about/StorySection';
+import { ImageBanner } from '../../components/about/imageBanner';
+import { ValuesSection } from '../../components/about/valuesSection';
 
 const staggerContainer = {
   hidden: { opacity: 0 },

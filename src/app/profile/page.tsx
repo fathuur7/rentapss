@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import HeaderSection from '../components/profile/HeaderSection';
-import ProfileInfo from '../components/profile/ProfileInfo';
-import Tabs from '../components/profile/Tabs';
-import TabContent from '../components/profile/TabContent';
-import ActionButtons from '../components/profile/ActionButtons';
+import HeaderSection from '../../components/profile/HeaderSection';
+import ProfileInfo from '../../components/profile/ProfileInfo';
+import Tabs from '../../components/profile/Tabs';
+import TabContent from '../../components/profile/TabContent';
+import ActionButtons from '../../components/profile/ActionButtons';
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('about');

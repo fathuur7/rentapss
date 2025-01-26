@@ -119,3 +119,4 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     </html>
   );
 }
+

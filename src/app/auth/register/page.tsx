@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
-import FormRegister from '../../components/form/FormRegister';
+import FormRegister from '../../../components/form/FormRegister';
 import { registerUser } from '../../../utils/registerUser';
 import { useRouter } from 'next/navigation';
 

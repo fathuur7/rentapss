@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState } from "react";
-import Navbar from "../components/layout/navbar";
-import ContactForm from "../components/contact/contactForm";
+import Navbar from "../../components/layout/navbar";
+import ContactForm from "../../components/contact/contactForm";
 import { motion } from "framer-motion";
-import VisitUsSection from "../components/contact/VisitUsSection";
-import ContactHero from "../components/contact/ContactHero";
-import ContactInfo from "../components/contact/contactInfo";
+import VisitUsSection from "../../components/contact/VisitUsSection";
+import ContactHero from "../../components/contact/ContactHero";
+import ContactInfo from "../../components/contact/contactInfo";
 
 const Contact: React.FC = () => {
   return (

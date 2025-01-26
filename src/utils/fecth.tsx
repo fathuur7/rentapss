@@ -5,7 +5,6 @@ export const fetchData = async (path : string) => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const dataProduct = await response.json();
-        console.log(dataProduct);
         return dataProduct;
     } catch (error) {
         console.error('Error fetching data:', error);

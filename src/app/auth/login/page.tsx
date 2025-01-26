@@ -1,9 +1,8 @@
 'use client';
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
-import FormLogin from '../../components/form/FormLogin';
+import FormLogin from '../../../components/form/FormLogin';
 import { loginUser } from '../../../utils/loginUser';
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +12,7 @@ const LoginPage = () => {
     email: '',
     password: '',
   });
-
+  const [isLoading, setIsLoading] = useState(false);
   const [loginStatus, setLoginStatus] = useState<{
     success: boolean | null;
     message: string;
@@ -23,33 +22,60 @@ const LoginPage = () => {
   });
 
   const handleLogin = async () => {
-    try {
-      const data = await loginUser(formData);
-      setLoginStatus({
-        success: true,
-        message: 'Login Successful!',
-      });
-      console.log('Login Successful:', data);
-      router.push('/home');
-      // jwt token
-      localStorage.setItem('token', data.token);
-    } catch (error ) {
+    
+    // Validate input before submission
+    if (!formData.email || !formData.password) {
       setLoginStatus({
         success: false,
-        message: error.message || 'Login failed. Please try again.',
+        message: 'Please enter both email and password.',
       });
-      console.error('Error during login:', error);
+      return;
+    }
+
+    setIsLoading(true);
+    setLoginStatus({ success: null, message: '' });
+
+    try {
+      const data = await loginUser(formData);
+      
+      if (data?.token) {
+        // Secure token storage
+        localStorage.setItem('token', data.token);
+        
+        // Clear sensitive data from state
+        setFormData({ email: '', password: '' });
+        
+        setLoginStatus({
+          success: true,
+          message: 'Login Successful!',
+        });
+        
+        // Slight delay before navigation to show success message
+        setTimeout(() => {
+          router.push('/home');
+        }, 500);
+      } else {
+        throw new Error('Authentication failed. Please try again.');
+      }
+    } catch (error: any) {
+      setLoginStatus({
+        success: false,
+        message: error.message || 'Login failed. Please check your credentials.',
+      });
+      console.error('Login error:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
-
+  
   return (
     <div className="space-y-4">
       <FormLogin
         formData={formData}
         setFormData={setFormData}
         onSubmit={handleLogin}
+        loading={isLoading}
       />
-
       {loginStatus.success !== null && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
