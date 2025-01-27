@@ -1,11 +1,11 @@
 'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { AlertCircle, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, AlertCircle } from 'lucide-react';
 import FormLogin from '../../../components/form/FormLogin';
 import { loginUser } from '../../../utils/loginUser';
 import { useRouter } from 'next/navigation';
-
 const LoginPage = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
