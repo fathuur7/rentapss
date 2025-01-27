@@ -1,10 +1,21 @@
+// next.config.ts
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['unsplash.com', 'i.pinimg.com'], // Menambahkan domain i.pinimg.com
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'unsplash.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pinimg.com'
+      }
+    ],
   },
-  /* config options here */
+  pageExtensions: ['tsx', 'ts'],
+  // Remove middlewarePath as it's not a valid Next.js config option
 };
 
 export default nextConfig;
