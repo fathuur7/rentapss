@@ -22,51 +22,47 @@ const LoginPage = () => {
   });
 
   const handleLogin = async () => {
-    
-    // Validate input before submission
     if (!formData.email || !formData.password) {
-      setLoginStatus({
-        success: false,
-        message: 'Please enter both email and password.',
-      });
-      return;
+        setLoginStatus({
+            success: false,
+            message: 'Please enter both email and password.',
+        });
+        return;
     }
 
     setIsLoading(true);
     setLoginStatus({ success: null, message: '' });
 
     try {
-      const data = await loginUser(formData);
-      
-      if (data?.token) {
-        // Secure token storage
-        localStorage.setItem('token', data.token);
-        
-        // Clear sensitive data from state
-        setFormData({ email: '', password: '' });
-        
-        setLoginStatus({
-          success: true,
-          message: 'Login Successful!',
-        });
-        
-        // Slight delay before navigation to show success message
-        setTimeout(() => {
-          router.push('/home');
-        }, 500);
-      } else {
-        throw new Error('Authentication failed. Please try again.');
-      }
+        const data = await loginUser(formData);
+
+        if (data?.success) {
+            // Hapus input field setelah login
+            setFormData({ email: '', password: '' });
+
+            setLoginStatus({
+                success: true,
+                message: 'Login Successful!',
+            });
+
+            // Redirect setelah sedikit delay
+            setTimeout(() => {
+                router.push('/home');
+            }, 500);
+        } else {
+            throw new Error('Authentication failed. Please try again.');
+        }
     } catch (error) {
-      setLoginStatus({
-        success: false,
-        message: (error as Error).message || 'Login failed. Please check your credentials.',
-      });
-      console.error('Login error:', error);
+        setLoginStatus({
+            success: false,
+            message: (error as Error).message || 'Login failed. Please check your credentials.',
+        });
+        console.error('Login error:', error);
     } finally {
-      setIsLoading(false);
+        setIsLoading(false);
     }
-  };
+};
+
   
   return (
     <div className="space-y-4">
