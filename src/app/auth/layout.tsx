@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, LogIn, UserPlus, Layers, Palette, Sun, Moon } from 'lucide-react';
+import { ArrowLeft, LogIn, UserPlus, Layers, Sun, Moon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

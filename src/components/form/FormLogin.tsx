@@ -19,7 +19,7 @@ interface FormData {
 const FormLogin: React.FC<{
   formData: FormData;
   setFormData: React.Dispatch<React.SetStateAction<FormData>>;
-  onSubmit: () => void;
+  onSubmit: (data : FormData) => void;
   loading?: boolean;
 }> = ({ formData, setFormData, onSubmit, loading = false }) => {
   const [showPassword, setShowPassword] = useState(false);

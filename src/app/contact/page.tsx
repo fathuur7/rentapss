@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../../components/layout/navbar";
 import ContactForm from "../../components/contact/contactForm";
 import { motion } from "framer-motion";

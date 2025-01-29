@@ -1,7 +1,8 @@
-export const loginUser = async (formData) => {
+export const loginUser = async (formData : FormData) => {
     const API_URL = 'http://localhost:5000/api/auth/login';
   
     try {
+      console.log('Logging in:', formData);
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Eye, EyeOff, User, Mail, Lock, Send } from 'lucide-react';
 import { z } from 'zod';
 
+
 // Validation Schema
 const registrationSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -86,14 +87,14 @@ const RegistrationForm: React.FC<{
     telegram?: string;
     password?: string;
   }>({});
-
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
     // Clear specific field error on change
     setValidationErrors(prev => ({ ...prev, [name]: undefined }));
   };
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     

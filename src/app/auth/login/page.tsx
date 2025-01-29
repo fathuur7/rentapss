@@ -57,10 +57,10 @@ const LoginPage = () => {
       } else {
         throw new Error('Authentication failed. Please try again.');
       }
-    } catch (error: any) {
+    } catch (error) {
       setLoginStatus({
         success: false,
-        message: error.message || 'Login failed. Please check your credentials.',
+        message: (error as Error).message || 'Login failed. Please check your credentials.',
       });
       console.error('Login error:', error);
     } finally {

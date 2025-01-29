@@ -50,11 +50,6 @@ export const metadata: Metadata = {
       { url: "/apple-icon.png" },
     ],
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
   robots: {
     index: true,
     follow: true,
@@ -72,6 +67,13 @@ export const metadata: Metadata = {
   },
 };
 
+// Move viewport configuration to a separate export as required by Next.js
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 // Root layout interface
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -85,7 +87,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 antialiased">
-        {/* Main content wrapper with proper spacing */}
+        {/* Main content wrapper */}
         <div className="flex min-h-screen flex-col">
           {/* Skip to main content link for accessibility */}
           <a 
@@ -106,10 +108,12 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark')
+                const theme = localStorage.theme;
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (theme === 'dark' || (!theme && prefersDark)) {
+                  document.documentElement.classList.add('dark');
                 } else {
-                  document.documentElement.classList.remove('dark')
+                  document.documentElement.classList.remove('dark');
                 }
               } catch (_) {}
             `,
@@ -119,4 +123,3 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     </html>
   );
 }
-

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUp, ArrowDown } from 'lucide-react';
-import { User, Mail, Lock } from 'lucide-react';
+// import { User, Mail, Lock } from 'lucide-react';
 
 interface InputFieldNumberProps {
   label: string;
