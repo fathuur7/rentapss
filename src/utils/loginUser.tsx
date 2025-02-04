@@ -1,4 +1,4 @@
-export const loginUser = async (formData: FormData) => {
+export const loginUser = async (formData : { email: string, password: string }) => {
     const API_URL = 'http://localhost:5000/api/auth/login';
 
     try {

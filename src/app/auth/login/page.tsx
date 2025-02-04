@@ -1,69 +1,102 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 import FormLogin from '../../../components/form/FormLogin';
 import { loginUser } from '../../../utils/loginUser';
 import { useRouter } from 'next/navigation';
+import { setSession, getSession } from '../../../utils/getSession';
+
+interface LoginFormData {
+  email: string;
+  password: string;
+}
+
+interface LoginStatus {
+  success: boolean | null;
+  message: string;
+}
+
 const LoginPage = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<LoginFormData>({
     email: '',
     password: '',
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [loginStatus, setLoginStatus] = useState<{
-    success: boolean | null;
-    message: string;
-  }>({
+  const [loginStatus, setLoginStatus] = useState<LoginStatus>({
     success: null,
     message: '',
   });
 
+  // Check for existing session on component mount
+  useEffect(() => {
+    const session = getSession();
+    if (session?.token) {
+      router.push('/home');
+    }
+  }, [router]);
+
   const handleLogin = async () => {
+    // Validation
     if (!formData.email || !formData.password) {
-        setLoginStatus({
-            success: false,
-            message: 'Please enter both email and password.',
-        });
-        return;
+      setLoginStatus({
+        success: false,
+        message: 'Please enter both email and password.',
+      });
+      return;
     }
 
     setIsLoading(true);
     setLoginStatus({ success: null, message: '' });
 
     try {
-        const data = await loginUser(formData);
+      const response = await loginUser(formData);
 
-        if (data?.success) {
-            // Hapus input field setelah login
-            setFormData({ email: '', password: '' });
+      if (response?.success) {
+        // Store session data
+        const sessionData = {
+          // token: response.token, // Assuming your API returns a token
+          user: {
+            email: formData.email,
+            ...response.user, // Spread other user data from response
+          },
+          lastLoginTime: new Date().toISOString(),
+        };
 
-            setLoginStatus({
-                success: true,
-                message: 'Login Successful!',
-            });
+        console.log('Session data:', sessionData);
 
-            // Redirect setelah sedikit delay
-            setTimeout(() => {
-                router.push('/home');
-            }, 500);
-        } else {
-            throw new Error('Authentication failed. Please try again.');
-        }
-    } catch (error) {
+        // Save session data
+        setSession(sessionData);
+
+        // Clear form
+        setFormData({ email: '', password: '' });
+
+        // Update status
         setLoginStatus({
-            success: false,
-            message: (error as Error).message || 'Login failed. Please check your credentials.',
+          success: true,
+          message: 'Login Successful!',
         });
-        console.error('Login error:', error);
-    } finally {
-        setIsLoading(false);
-    }
-};
 
-  
+        // Redirect after brief delay
+        setTimeout(() => {
+          router.push('/home');
+        }, 500);
+      } else {
+        throw new Error(response?.message || 'Authentication failed. Please try again.');
+      }
+    } catch (error) {
+      setLoginStatus({
+        success: false,
+        message: (error as Error).message || 'Login failed. Please check your credentials.',
+      });
+      console.error('Login error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="space-y-4">
       <FormLogin

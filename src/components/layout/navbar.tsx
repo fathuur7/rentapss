@@ -11,6 +11,7 @@ import {
   Home, 
   PhoneCall,
   Info,
+  LogOut,
   ShoppingBag
 } from 'lucide-react';
 import Link from 'next/link';
@@ -61,6 +62,10 @@ const Navbar = () => {
     { name: 'About', icon: Info, href: '/about' },
     { name: 'Products', icon: ShoppingBag, href: '/products' },
     { name: 'Contact', icon: PhoneCall, href: '/contact' },
+    // { name: 'Logout', icon: LogOut, href: '/logout' },
+    // { name: 'Profile', icon: User, href: '/profile' },
+    // { name: 'Cart', icon: ShoppingCart, href: '/cart' },
+    // { name: 'Search', icon: Search, href: '/search' },
   ];
 
   return (
@@ -116,7 +121,7 @@ const Navbar = () => {
 
           {/* Desktop Icons */}
           <motion.div
-            className="hidden md:flex items-center space-x-6"
+            className="hidden md:flex items-center space-x-4"
             variants={containerVariants}
           >
             <AnimatePresence>
@@ -172,6 +177,16 @@ const Navbar = () => {
                 </span>
               </a>
             </Link>
+
+            {/* <Link href="/logout" legacyBehavior>
+              <a className="p-2 hover:bg-yellow-500 rounded-full transition-colors duration-200 relative group">
+                <LogOut className="w-6 h-6" />
+                <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  Logout
+                </span>
+              </a>
+            </Link> */}
+
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -194,7 +209,12 @@ const Navbar = () => {
               className="fixed inset-0 bg-gradient-to-b from-yellow-400 to-yellow-300 md:hidden pt-24 px-6"
             >
               <ul className="flex flex-col space-y-6 items-center">
-                {[...navItems, { name: 'Search', icon: Search }, { name: 'Profile', icon: User }, { name: 'Cart', icon: ShoppingCart }].map((item, index) => (
+                {[...navItems, 
+                { name: 'Search', icon: Search, href: '#' }, 
+                { name: 'Profile', icon: User , href: '/profile' }, 
+                { name: 'Cart', icon: ShoppingCart , href: '/cart' },
+                { name: 'Log Out', icon:LogOut  , href: '/logout' },
+              ].map((item, index) => (
                   <motion.li
                     key={index}
                     variants={textVariants}
