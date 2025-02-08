@@ -6,7 +6,7 @@ import { CheckCircle2, AlertCircle } from 'lucide-react';
 import FormLogin from '../../../components/form/FormLogin';
 import { loginUser } from '../../../utils/loginUser';
 import { useRouter } from 'next/navigation';
-import { setSession, getSession } from '../../../utils/getSession';
+// import { setSession, getSession } from '../../../utils/getSession';
 
 interface LoginFormData {
   email: string;
@@ -30,14 +30,6 @@ const LoginPage = () => {
     message: '',
   });
 
-  // Check for existing session on component mount
-  useEffect(() => {
-    const session = getSession();
-    if (session?.token) {
-      router.push('/home');
-    }
-  }, [router]);
-
   const handleLogin = async () => {
     // Validation
     if (!formData.email || !formData.password) {
@@ -57,18 +49,15 @@ const LoginPage = () => {
       if (response?.success) {
         // Store session data
         const sessionData = {
-          // token: response.token, // Assuming your API returns a token
-          user: {
-            email: formData.email,
-            ...response.user, // Spread other user data from response
-          },
-          lastLoginTime: new Date().toISOString(),
+          token: response.token,
+          user: response.user,
         };
 
-        console.log('Session data:', sessionData);
+        // Store session data in local storage
+        localStorage.setItem('session', JSON.stringify(sessionData));
 
         // Save session data
-        setSession(sessionData);
+        // setSession(sessionData);
 
         // Clear form
         setFormData({ email: '', password: '' });

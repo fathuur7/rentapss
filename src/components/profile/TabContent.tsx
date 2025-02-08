@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Calendar, Star, Heart, MessageSquare } from 'lucide-react';
+// import { getSession } from '@/utils/getSession';
 
 interface TabContentProps {
   activeTab: string;
 }
 
 const TabContent = ({ activeTab }: TabContentProps) => {
+  // const session = getSession();
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -48,7 +50,9 @@ const TabContent = ({ activeTab }: TabContentProps) => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500">Email</p>
-                  <p className="text-gray-700">sarah.anderson@example.com</p>
+                  <p className="text-gray-700">
+                    kowski@gmail.com
+                  </p>
                 </div>
               </motion.div>
 

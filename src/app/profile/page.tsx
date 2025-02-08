@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { LogOut, Settings, Bell, User } from 'lucide-react';
 import HeaderSection from '../../components/profile/HeaderSection';
@@ -9,6 +9,7 @@ import Tabs from '../../components/profile/Tabs';
 import TabContent from '../../components/profile/TabContent';
 import ActionButtons from '../../components/profile/ActionButtons';
 import { useRouter } from 'next/navigation';
+import  logoutFetch  from '@/utils/logoutFetch';
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('about');
@@ -38,29 +39,12 @@ const ProfilePage = () => {
     }
   };
 
-  const deleteCookies = () => {
-    const cookies = document.cookie.split(';');
-    
-    for (let cookie of cookies) {
-      const eqPos = cookie.indexOf('=');
-      const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
-      // Setting expired date to delete the cookie
-      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;`;
-      // Also try with domain attribute if needed
-      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${window.location.hostname};`;
-    }
-  };
-
-
-  const handleLogout = () => {
-    setShowLogoutConfirm(true);
-  };
-
-  const confirmLogout = () => {
-    deleteCookies();
-    router.push('/auth/login');
-
-    setShowLogoutConfirm(false);
+  const confirmLogout = async () => {
+    // hapus local storage
+    localStorage.clear();
+    await logoutFetch();
+    // cleaarSession
+    router.push('auth/login');
   };
 
   return (
@@ -86,7 +70,7 @@ const ProfilePage = () => {
                 <Settings className="h-5 w-5 text-gray-600" />
               </button>
               <button
-                onClick={handleLogout}
+                onClick={() => confirmLogout()}
                 className="flex items-center px-4 py-2 rounded-full bg-red-50 text-red-600 hover:bg-red-100 transition-colors"
               >
                 <LogOut className="h-4 w-4 mr-2" />

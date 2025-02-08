@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { Star, MessageCircle, Users, Award } from 'lucide-react';
 
 const ProfileInfo = () => {
+  // const session = getSession();
+  // get from session localstorage
+  const userData = JSON.parse(localStorage.getItem('session') || '{}');
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -39,7 +42,7 @@ const ProfileInfo = () => {
         className="text-3xl font-bold text-gray-800 mb-2"
         variants={itemVariants}
       >
-        Sarah Anderson
+      {userData.user.name}
       </motion.h1>
       
       <motion.p 
