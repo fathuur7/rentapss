@@ -54,7 +54,7 @@ const LoginPage = () => {
         };
 
         // Store session data in local storage
-        localStorage.setItem('session', JSON.stringify(sessionData));
+        // localStorage.setItem('session', JSON.stringify(sessionData));
 
         // Save session data
         // setSession(sessionData);

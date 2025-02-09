@@ -213,7 +213,6 @@ const Navbar = () => {
                 { name: 'Search', icon: Search, href: '#' }, 
                 { name: 'Profile', icon: User , href: '/profile' }, 
                 { name: 'Cart', icon: ShoppingCart , href: '/cart' },
-                { name: 'Log Out', icon:LogOut  , href: '/logout' },
               ].map((item, index) => (
                   <motion.li
                     key={index}

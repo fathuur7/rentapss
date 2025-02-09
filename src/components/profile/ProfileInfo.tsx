@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, MessageCircle, Users, Award } from 'lucide-react';
+import { useUserData } from '@/utils/fetchUserData';
 
 const ProfileInfo = () => {
-  // const session = getSession();
-  // get from session localstorage
-  const userData = JSON.parse(localStorage.getItem('session') || '{}');
+  const userData = useUserData();
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -42,7 +42,7 @@ const ProfileInfo = () => {
         className="text-3xl font-bold text-gray-800 mb-2"
         variants={itemVariants}
       >
-      {userData.user.name}
+        {userData?.name}
       </motion.h1>
       
       <motion.p 

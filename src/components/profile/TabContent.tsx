@@ -2,12 +2,14 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Calendar, Star, Heart, MessageSquare } from 'lucide-react';
 // import { getSession } from '@/utils/getSession';
+import { useUserData } from '@/utils/fetchUserData';
 
 interface TabContentProps {
   activeTab: string;
 }
 
 const TabContent = ({ activeTab }: TabContentProps) => {
+  const userData = useUserData();
   // const session = getSession();
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -51,7 +53,7 @@ const TabContent = ({ activeTab }: TabContentProps) => {
                 <div>
                   <p className="text-sm text-gray-500">Email</p>
                   <p className="text-gray-700">
-                    kowski@gmail.com
+                  {userData?.email}
                   </p>
                 </div>
               </motion.div>
@@ -61,8 +63,10 @@ const TabContent = ({ activeTab }: TabContentProps) => {
                   <Phone className="w-5 h-5 text-yellow-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Phone</p>
-                  <p className="text-gray-700">+1 234 567 8900</p>
+                  <p className="text-sm text-gray-500">telegram</p>
+                  <p className="text-gray-700">
+                    {userData?.telegram}
+                  </p>
                 </div>
               </motion.div>
 

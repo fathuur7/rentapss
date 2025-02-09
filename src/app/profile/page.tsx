@@ -10,11 +10,18 @@ import TabContent from '../../components/profile/TabContent';
 import ActionButtons from '../../components/profile/ActionButtons';
 import { useRouter } from 'next/navigation';
 import  logoutFetch  from '@/utils/logoutFetch';
-
+import { useUserData } from '@/utils/fetchUserData';
+// impoer { useUserData}
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('about');
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const router = useRouter();
+  const userData = useUserData();
+
+  // console.log(userData);
+  const userId = userData?.id; // Ambil _id
+  const pathProfile = `/profile/setings/${userId}`;
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -37,6 +44,10 @@ const ProfilePage = () => {
         ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
+  };
+
+  const setingsButton = () => {
+    router.push(pathProfile);
   };
 
   const confirmLogout = async () => {
@@ -66,8 +77,11 @@ const ProfilePage = () => {
               <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
                 <Bell className="h-5 w-5 text-gray-600" />
               </button>
-              <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-                <Settings className="h-5 w-5 text-gray-600" />
+              <button 
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                <Settings
+                onClick={setingsButton}
+                className="h-5 w-5 text-gray-600" />
               </button>
               <button
                 onClick={() => confirmLogout()}
@@ -141,7 +155,7 @@ const ProfilePage = () => {
                 Cancel
               </button>
               <button
-                onClick={confirmLogout}
+               onClick={() => confirmLogout()}
                 className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors"
               >
                 Logout
