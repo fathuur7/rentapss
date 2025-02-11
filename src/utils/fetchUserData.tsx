@@ -8,7 +8,7 @@ interface UserData {
   telegram: string;
 }
 
-export const useUserData = () => {
+export const useUserData = ( ) => {
   const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
@@ -38,3 +38,6 @@ export const useUserData = () => {
 
   return userData;
 };
+
+// Gunakan hook ini di komponen React
+
